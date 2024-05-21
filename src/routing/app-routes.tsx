@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { PathsDict, RouteKey } from './routing-config';
 import { AppRoot } from '../components/layout/AppRoot';
 import { Home } from '../components/views/home/Home';
-import { Login } from '../components/views/login/Login';
+import { AddMaternityGrant } from '../components/views/maternityGrant/AddMaternityGrant';
 
 
 export const appRouter = createBrowserRouter([
@@ -17,8 +17,8 @@ export const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: PathsDict[RouteKey.LOGIN],
-        element: <Login />,
+        path: PathsDict[RouteKey.ADD_MATERNITY_GRANT],
+        element: <AddMaternityGrant />,
       },
       // {
       //   path: PathsDict[RouteKey.WELCOME],

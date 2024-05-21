@@ -2,7 +2,7 @@ export enum RouteKey {
   ROOT = 'ROOT',
   WELCOME = 'WLC',
   HOME = 'HME',
-  LOGIN = 'LOG',
+  ADD_MATERNITY_GRANT = 'AMG',
   // SCAFFOLD_PLATFORM_CONFIG = "SCAFFOLD_PLATFORM_CONFIG"
 }
 
@@ -10,7 +10,7 @@ export const PathsDict: Record<RouteKey, string> = {
   [RouteKey.ROOT]: '/',
   [RouteKey.WELCOME]: '/welcome',
   [RouteKey.HOME]: '/home',
-  [RouteKey.LOGIN]: '/login',
+  [RouteKey.ADD_MATERNITY_GRANT]: '/AddMaternityGrant',
 
   // [RouteKey.AUTH_LOGIN]: '/auth/login',
   // // [RouteKey.AUTH_LOGOUT]: '/auth/logout',
