@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Typography } from 'antd';
 import moment from 'moment';  // Ensure moment is imported
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
+import { requestToBackend } from '../../../service/requestToBackend';
+import locale from 'antd/es/date-picker/locale/he_IL';
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -15,14 +17,49 @@ interface FormValues {
     branch: string;
     upload?: any;
 }
-
+interface Branch {
+    id: string;
+    name: string;
+}
 export const AddMaternityGrant: React.FC = () => {
     const [form] = Form.useForm<FormValues>();
+    const [branches, setBranches] = useState<Branch[]>([]);
 
-    const onFinish = (values: FormValues) => {
-        console.log('Form values:', values);
+    const onFinish = async (values: FormValues) => {
+        try {
+            const response = await requestToBackend('add-maternity-grant', 'post', {
+                OID: values.oid,
+                birthDate: values.birthDate,
+                childrenBeforeBirth: values.childrenBeforeBirth,
+                childrenActualBirth: values.childrenActualBirth,
+                submissionDate: values.submissionDate,
+                branch: values.branch
+            });
+
+            if (response.status === 200) {
+                console.log('Maternity grant added successfully:', response.data);
+                // Handle successful response
+            } else {
+                console.error('Failed to add maternity grant:', response.statusText);
+                // Handle error response
+            }
+        } catch (error) {
+            console.error('An error occurred while processing the request:', error);
+            // Handle error response
+        }
     };
+    useEffect(() => {
+        const fetchBranches = async () => {
+            try {
+                const response = await requestToBackend('get-branches', 'get');
+                setBranches(response.data);
+            } catch (error) {
+                console.error('Error fetching branches:', error);
+            }
+        };
 
+        fetchBranches();
+    }, []);
     const inputStyle = {
         width: '350px',
         borderRadius: '8px',
@@ -30,11 +67,12 @@ export const AddMaternityGrant: React.FC = () => {
     };
 
     return (
+
         <div style={{
-            direction: 'rtl', padding: '24px', margin: '0 auto', borderRadius: '12px', backgroundColor: '#EEF2F7'
+            direction: 'rtl', padding: '24px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'
         }}>
             <img src={bituhLeumiLogo} alt="Bituh Leumi Logo" style={{ display: 'block', margin: '0 auto 24px' }} />
-            <Title level={4} style={{ textAlign: 'right' }}>הוספת אירוע חדש</Title>
+            <Title level={4} style={{ textAlign: 'right', }}>הוספת אירוע חדש</Title>
             <Title level={5} style={{ textAlign: 'right', marginBottom: '18px' }}>פרטי אירוע הלידה</Title>
             <Form
                 form={form}
@@ -56,7 +94,7 @@ export const AddMaternityGrant: React.FC = () => {
                     rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
                     style={{ marginBottom: '16px' }}
                 >
-                    <DatePicker format="DD-MM-YYYY" style={{ ...inputStyle, width: '100%' }} placeholder="תאריך לידה בפועל" />
+                    <DatePicker locale={locale} format="DD-MM-YYYY" style={{ ...inputStyle, width: '100%' }} placeholder="תאריך לידה בפועל" />
                 </Form.Item>
 
                 <Form.Item
@@ -80,7 +118,7 @@ export const AddMaternityGrant: React.FC = () => {
                     rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
                     style={{ marginBottom: '16px' }}
                 >
-                    <DatePicker format="DD-MM-YYYY" style={{ ...inputStyle, width: '100%' }} placeholder="תאריך הגשת תביעת מענק לידה" />
+                    <DatePicker locale={locale} format="DD-MM-YYYY" style={{ ...inputStyle, width: '100%' }} placeholder="תאריך הגשת תביעת מענק לידה" />
                 </Form.Item>
 
                 <Form.Item
@@ -88,13 +126,14 @@ export const AddMaternityGrant: React.FC = () => {
                     rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
                     style={{ marginBottom: '22px' }}
                 >
-                    <Select placeholder="בחר סניף" style={inputStyle} direction='rtl'>
-                        <Option value="branch1">ירושלים</Option>
-                        <Option value="branch2">רחובות</Option>
-                        <Option value="branch2">תל אביב</Option>
+                    <Select placeholder="בחר סניף" style={{ width: '100%' }}>
+                        {branches.map((branch) => (
+                            <Option key={branch.id} value={branch.id}>
+                                {branch.name}
+                            </Option>
+                        ))}
                     </Select>
                 </Form.Item>
-
                 <Form.Item style={{ textAlign: 'center' }}>
                     <Button htmlType="submit" style={{ marginLeft: '16px', background: 'rgba(3, 104, 176, 1)', color: 'white' }}>
                         שמור
@@ -104,7 +143,9 @@ export const AddMaternityGrant: React.FC = () => {
                     </Button>
                 </Form.Item>
             </Form>
-        </div >
+        </div>
+
+
     );
 };
 

@@ -16,7 +16,7 @@ export const AppRoot = () => {
   function navigateToHomeOrWelcome(isAuthenticated: boolean) {
     if (location.pathname === '/') {
       if (isAuthenticated) {
-        navigate(PathsDict[RouteKey.ADD_MATERNITY_GRANT]);
+        navigate(PathsDict[RouteKey.LOGIN]);
       } else {
         navigate(PathsDict[RouteKey.WELCOME]);
         // navigate(PathsDict[RouteKey.HOME]);

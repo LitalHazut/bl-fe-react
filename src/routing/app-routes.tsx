@@ -2,8 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { PathsDict, RouteKey } from './routing-config';
 import { AppRoot } from '../components/layout/AppRoot';
-import { Home } from '../components/views/home/Home';
 import { AddMaternityGrant } from '../components/views/maternityGrant/AddMaternityGrant';
+import Login from '../components/views/login/Login';
+import { ClerkTasksDeshbord } from '../components/views/ClerkTasksDeshbord/ClerkTasksDeshbord';
 
 
 export const appRouter = createBrowserRouter([
@@ -13,12 +14,16 @@ export const appRouter = createBrowserRouter([
     element: <AppRoot />,
     children: [
       {
-        path: PathsDict[RouteKey.HOME],
-        element: <Home />,
+        path: PathsDict[RouteKey.LOGIN],
+        element: <Login />,
       },
       {
         path: PathsDict[RouteKey.ADD_MATERNITY_GRANT],
         element: <AddMaternityGrant />,
+      },
+      {
+        path: PathsDict[RouteKey.CLERK_TASKS_DESHBORD],
+        element: <ClerkTasksDeshbord />,
       },
       // {
       //   path: PathsDict[RouteKey.WELCOME],

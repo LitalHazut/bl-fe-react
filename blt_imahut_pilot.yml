@@ -1,0 +1,353 @@
+---
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Imahut pilot - OpenAPI
+  description: Imahut pilot API
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: litalhaz@matrix.co.il
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Java Spring Server
+    url: https://virtserver.swaggerhub.com/sel657/blApi2/1.0.0
+tags:
+  - name: Status
+    description: Checking server status
+  - name: Get
+    description: Get data from Database
+  - name: Permissions
+    description: Verify or get user's permissions
+paths:
+  /is-alive:
+    get:
+      tags:
+        - Status
+      summary: is alive
+      description: Status
+      operationId: java_pilot.is_alive
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /user-logout:
+    post:
+      tags:
+        - Post
+      summary: summary
+      operationId: java_pilot.login_manager.user_logout
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Authorization header - jwt
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /verify-login-challenge:
+    post:
+      tags:
+        - Permissions
+      summary: summary
+      operationId: java_pilot.login_manager.finalize_login_with_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /create-challenge:
+    post:
+      tags:
+        - Permissions
+      summary: save in temp db signed timestamp and uuid
+      operationId: java_pilot.login_manager.create_challenge
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /initial-login:
+    post:
+      tags:
+        - Permissions
+      summary: login with temporary details
+      operationId: java_pilot.login_manager.initial_login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InitialLogin"
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /update-jwt:
+    post:
+      tags:
+        - post
+      summary: update jwt exp
+      description: add time to exp
+      operationId: java_pilot.update_jwt
+      responses:
+        "200":
+          description: successful
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+  /get-branches:
+    get:
+      tags:
+        - Get
+      summary: Retrieve a list of branches
+      description: Get all branches from the database
+      operationId: getBranches
+      responses:
+        "200":
+          description: A list of branches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Branch"
+              examples:
+                example1:
+                  summary: Example of two branches
+                  value:
+                    - id: 1
+                      name: ירושלים
+                    - id: 2
+                      name: תל אביב
+        "400":
+          $ref: "#/components/responses/400BadRequest"
+        "401":
+          $ref: "#/components/responses/401UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/404NotFound"
+        "429":
+          $ref: "#/components/responses/429TooManyRequests"
+        "500":
+          $ref: "#/components/responses/500UnexpectedError"
+        "503":
+          $ref: "#/components/responses/503ServiceUnavailable"
+        default:
+          $ref: "#/components/responses/500UnexpectedError"
+components:
+  schemas:
+    CreateJwt:
+      type: object
+      properties:
+        UserId:
+          type: string
+    PostSignedTs:
+      type: object
+      properties:
+        UserId:
+          type: string
+        TimeStamp:
+          type: string
+        SignedTimeStamp:
+          type: string
+    GetKeyGen:
+      type: object
+      properties:
+        userId:
+          type: string
+    InitialLogin:
+      type: object
+      properties:
+        userId:
+          type: string
+        userCode:
+          type: string
+        tempPassword:
+          type: string
+    Branch:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Errors:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              source:
+                title: ErrorSource
+                required:
+                  - location
+                  - name
+                properties:
+                  location:
+                    type: string
+                    enum:
+                      - path
+                      - query
+                      - body
+                      - header
+                  name:
+                    type: string
+                    description: the name of the property or parameter causing the error
+                  path:
+                    type: string
+                    description: JSON path targeting the source
+  responses:
+    304NotModified:
+      description: Not Modified
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    401UnauthorizedError:
+      description: Unauthorized. Missing or invalid API key (JWT)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    500UnexpectedError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    400BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    403Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    404NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    408Timeout:
+      description: Request Timeout
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    429TooManyRequests:
+      description: Too many requests
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    503ServiceUnavailable:
+      description: Service unavailable
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
+    defaultError:
+      description: Unexpected error (General)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Errors"
