@@ -55,3 +55,9 @@
 .ant-menu-item-selected {
     background-color: #0054a6 !important;
 }
+
+.whiteText {
+    color: white;
+    margin-right: 20px;
+    align-self: flex-end;
+}

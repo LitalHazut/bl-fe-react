@@ -1,12 +1,44 @@
 
 import searchIcon from '../../../images/searchIcon.png';
+import { ClickableText } from '../../UI/ClickableText';
+import DropdownTextElement from '../../UI/DropdownTextElement';
 import './TopMenu.css'
 import { useState } from 'react';
-import { ClickableText } from './ClickableText';
+
 
 export const TopMenu = () => {
     const [selectedText, setSelectedText] = useState('');
 
+    const optionsTasks = [
+        { value: "all-tasks", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
+    const managerOccupation = [
+        { value: "manager-occupation", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
+    const taskType = [
+        { value: "task-type", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
+    const clerks = [
+        { value: "clerks", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
+    const processDomain = [
+        { value: "process-domain", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
+    const processStatus = [
+        { value: "process-status", label: "כל המשימות" },
+        { value: "task-type-1", label: "סוג משימה 1" },
+        { value: "task-type-2", label: "סוג משימה 2" },
+    ];
     const handleClick = (text: string) => {
         setSelectedText(text);
     };
@@ -15,7 +47,7 @@ export const TopMenu = () => {
     return (
         <div >
             <div style={{
-                display: 'flex', justifyContent: 'center', background: '#2785ba', padding: '15px', borderRadius: '10px 10px 0 0',
+                display: 'flex', justifyContent: 'center', background: '#2785ba', padding: '15px', borderRadius: '10px 10px 0 0', marginBottom: '10px'
             }}>
                 <div style={{ display: 'flex' }}>
                     <div style={{ background: 'white', borderRadius: '10px', borderColor: '#0054A6', alignContent: 'center' }}>
@@ -37,7 +69,40 @@ export const TopMenu = () => {
                     <ClickableText text="ראשי" isClicked={selectedText === "ראשי"} onClick={() => handleClick("ראשי")} />
                 </div>
             </div >
-
+            <div style={{
+                display: 'flex', justifyContent: 'center', background: '#58ACE8', padding: '10px', borderRadius: '10px 10px 0 0'
+            }}>
+                <DropdownTextElement
+                    label="סטטוס תהליך"
+                    defaultValue="process-status"
+                    options={processStatus}
+                />
+                <DropdownTextElement
+                    label="תחום תהליך"
+                    defaultValue="process-domain"
+                    options={processDomain}
+                />
+                <DropdownTextElement
+                    label="פקידים"
+                    defaultValue="clerks"
+                    options={clerks}
+                />
+                <DropdownTextElement
+                    label="סוג משימה"
+                    defaultValue="task-type"
+                    options={taskType}
+                />
+                <DropdownTextElement
+                    label="עיסוק מנהל"
+                    defaultValue="manager-occupation"
+                    options={managerOccupation}
+                />
+                <DropdownTextElement
+                    label="סניף המשימה"
+                    defaultValue="all-tasks"
+                    options={optionsTasks}
+                />
+            </div>
         </div >
 
     )

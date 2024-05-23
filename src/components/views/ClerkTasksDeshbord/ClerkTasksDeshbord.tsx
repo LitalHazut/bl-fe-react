@@ -1,6 +1,6 @@
 import Avatar from '../../../images/Avatar.png';
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
-import { TopMenu } from '../TopMenu/TopMenu';
+import { TopMenu } from '../../views/TopMenu/TopMenu';
 
 export const ClerkTasksDeshbord = () => {
     return (
