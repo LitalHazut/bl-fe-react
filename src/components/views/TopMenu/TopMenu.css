@@ -1,0 +1,57 @@
+/* src/components/TopMenu.css */
+.top-menu-container {
+    display: flex;
+    flex-direction: column;
+    background: #2785ba;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.top-menu-search {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.notification-icon {
+    background-color: #ffffff;
+    color: #2785ba;
+    margin-right: 10px;
+}
+
+.search-input {
+    width: 200px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.search-label {
+    color: white;
+    font-size: 14px;
+}
+
+.top-menu {
+    background: transparent;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none;
+    flex-grow: 1;
+}
+
+.ant-menu-item {
+    color: white !important;
+    font-size: 14px;
+}
+
+.ant-menu-item-selected {
+    background-color: #0054a6 !important;
+}
