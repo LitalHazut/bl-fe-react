@@ -1,0 +1,110 @@
+import React from 'react';
+import { Table, Badge, Space, Dropdown, Menu } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import { DownOutlined } from '@ant-design/icons';
+
+interface DataType {
+    key: React.Key;
+    mishoot: string;
+    lacoah: string;
+    status: string;
+    openingDate: string;
+    closingDate: string;
+    treatment: number;
+}
+
+interface ExpandedDataType {
+    key: React.Key;
+    mishoot: string;
+    lacoah: string;
+    status: string;
+    openingDate: string;
+    closingDate: string;
+    treatment: number;
+}
+
+const expandedRowRender = (record: DataType) => {
+    const columns: ColumnsType<ExpandedDataType> = [
+        { title: 'משרות', dataIndex: 'mishoot', key: 'mishoot' },
+        { title: 'לקוחות', dataIndex: 'lacoah', key: 'lacoah' },
+        { title: 'סטטוס', dataIndex: 'status', key: 'status' },
+        { title: 'תאריך פתיחה', dataIndex: 'openingDate', key: 'openingDate' },
+        { title: 'תאריך סיום', dataIndex: 'closingDate', key: 'closingDate' },
+        { title: 'בטיפול', dataIndex: 'treatment', key: 'treatment' },
+    ];
+
+    const data: ExpandedDataType[] = [
+        {
+            key: '1',
+            mishoot: 'תוכנית אינטרנט גבר',
+            lacoah: 'ישראל ישראלי',
+            status: 'חדש',
+            openingDate: '23/08/23',
+            closingDate: '14/09/23',
+            treatment: 15,
+        },
+        {
+            key: '2',
+            mishoot: 'מעקב איסור',
+            lacoah: '',
+            status: '',
+            openingDate: '',
+            closingDate: '',
+            treatment: 8,
+        },
+    ];
+
+    return <Table columns={columns} dataSource={data} pagination={false} />;
+};
+
+const columns: ColumnsType<DataType> = [
+    { title: 'משרות', dataIndex: 'mishoot', key: 'mishoot' },
+    { title: 'לקוחות', dataIndex: 'lacoah', key: 'lacoah' },
+    { title: 'סטטוס', dataIndex: 'status', key: 'status' },
+    { title: 'תאריך פתיחה', dataIndex: 'openingDate', key: 'openingDate' },
+    { title: 'תאריך סיום', dataIndex: 'closingDate', key: 'closingDate' },
+    { title: 'בטיפול', dataIndex: 'treatment', key: 'treatment' },
+];
+
+const data: DataType[] = [
+    {
+        key: '1',
+        mishoot: 'תוכנית אינטרנט גבר',
+        lacoah: 'ישראל ישראלי',
+        status: 'חדש',
+        openingDate: '23/08/23',
+        closingDate: '14/09/23',
+        treatment: 15,
+    },
+    {
+        key: '2',
+        mishoot: 'מעקב איסור',
+        lacoah: '',
+        status: '',
+        openingDate: '',
+        closingDate: '',
+        treatment: 8,
+    },
+    {
+        key: '3',
+        mishoot: 'תוכנית אינטרנט גבר',
+        lacoah: 'ישראל ישראלי',
+        status: 'חדש',
+        openingDate: '23/08/23',
+        closingDate: '14/09/23',
+        treatment: 15,
+    },
+];
+
+const ClerkTable: React.FC = () => {
+    return (
+        <Table
+            columns={columns}
+            expandable={{ expandedRowRender }}
+            dataSource={data}
+            pagination={false}
+        />
+    );
+};
+
+export default ClerkTable;

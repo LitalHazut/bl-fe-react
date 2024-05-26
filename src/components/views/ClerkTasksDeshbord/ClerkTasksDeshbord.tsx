@@ -1,5 +1,6 @@
 import Avatar from '../../../images/Avatar.png';
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
+import ClerkTable from '../clerkTable/ClerkTable';
 import { TopMenu } from '../topMenu/TopMenu';
 
 export const ClerkTasksDeshbord = () => {
@@ -28,6 +29,7 @@ export const ClerkTasksDeshbord = () => {
                 />
             </div>
             <TopMenu />
+            <ClerkTable />
         </div>
     )
 }

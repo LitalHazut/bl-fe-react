@@ -1,0 +1,60 @@
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-thead>tr>th,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-thead>tr>td {
+    background: rgba(228, 238, 253, 1);
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-cell,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-thead>tr>th,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-tbody>tr>th,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-tbody>tr>td,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>th,
+:where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>td {
+    padding: 10px 12px 10px 0px;
+}
+
+.ant-table-cell-divider-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 4em;
+    background-color: #959595;
+}
+
+.treatment {
+    margin-right: 8px;
+
+}
+
+.divider-text {
+    position: relative;
+}
+
+.divider-line {
+    top: 50%;
+    right: 100%;
+    width: 100%;
+    height: 0.8px;
+    background-color: #959595;
+}
+
+.divider-column-parts {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: -10px;
+}
+
+.divider-column-parts>div {
+    width: 100%;
+    border-left: 1px solid #959595;
+}
+
+.divider-column-parts>div:first-child {
+    border-left: none;
+}
