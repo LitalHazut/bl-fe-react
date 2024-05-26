@@ -1,10 +1,10 @@
 import Avatar from '../../../images/Avatar.png';
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
-import { TopMenu } from '../../views/TopMenu/TopMenu';
+import { TopMenu } from '../topMenu/TopMenu';
 
 export const ClerkTasksDeshbord = () => {
     return (
-        <div style={{ position: 'absolute', top: '10px', right: '10px', display: 'block', flexDirection: 'column', alignItems: 'flex-end', }}>
+        <div style={{ position: 'absolute', top: '10px', right: '30px', display: 'block', flexDirection: 'column', alignItems: 'flex-end', }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px' }}>
                 <img
                     src={bituhLeumiLogo}

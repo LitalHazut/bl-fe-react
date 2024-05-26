@@ -4,7 +4,7 @@ import { PathsDict, RouteKey } from './routing-config';
 import { AppRoot } from '../components/layout/AppRoot';
 import { AddMaternityGrant } from '../components/views/maternityGrant/AddMaternityGrant';
 import Login from '../components/views/login/Login';
-import { ClerkTasksDeshbord } from '../components/views/ClerkTasksDeshbord/ClerkTasksDeshbord';
+import { ClerkTasksDeshbord } from '../components/views/clerkTasksDeshbord/ClerkTasksDeshbord';
 
 
 export const appRouter = createBrowserRouter([
