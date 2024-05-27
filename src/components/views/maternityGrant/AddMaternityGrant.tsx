@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Typography } from 'antd';
 import moment from 'moment';  // Ensure moment is imported
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
-import { requestToBackend } from '../../../service/requestToBackend';
 import locale from 'antd/es/date-picker/locale/he_IL';
-import { getFromServer } from '../../../utils/network';
+import { getFromServer, postToServer } from '../../../utils/network';
 
 const { Option } = Select;
 const { Title } = Typography;
@@ -31,7 +30,7 @@ export const AddMaternityGrant: React.FC = () => {
 
     const onFinish = async (values: FormValues) => {
         try {
-            const response = await requestToBackend('add-maternity-grant', 'post', {
+            const response = await postToServer('add-maternity-grant', {
                 ID: values.id,
                 OID: values.oid,
                 firstName: values.firstName,
