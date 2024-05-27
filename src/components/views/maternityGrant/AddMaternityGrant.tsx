@@ -4,23 +4,27 @@ import moment from 'moment';  // Ensure moment is imported
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
 import { requestToBackend } from '../../../service/requestToBackend';
 import locale from 'antd/es/date-picker/locale/he_IL';
+import { getFromServer } from '../../../utils/network';
 
 const { Option } = Select;
 const { Title } = Typography;
 
 interface FormValues {
+    id: string;
     oid: string;
+    firstName: string;
+    lastName: string;
     birthDate: moment.Moment;
-    childrenBeforeBirth: number;
-    childrenActualBirth: number;
     submissionDate: moment.Moment;
     branch: string;
     upload?: any;
 }
+
 interface Branch {
     id: string;
     name: string;
 }
+
 export const AddMaternityGrant: React.FC = () => {
     const [form] = Form.useForm<FormValues>();
     const [branches, setBranches] = useState<Branch[]>([]);
@@ -28,10 +32,11 @@ export const AddMaternityGrant: React.FC = () => {
     const onFinish = async (values: FormValues) => {
         try {
             const response = await requestToBackend('add-maternity-grant', 'post', {
+                ID: values.id,
                 OID: values.oid,
+                firstName: values.firstName,
+                lastName: values.lastName,
                 birthDate: values.birthDate,
-                childrenBeforeBirth: values.childrenBeforeBirth,
-                childrenActualBirth: values.childrenActualBirth,
                 submissionDate: values.submissionDate,
                 branch: values.branch
             });
@@ -48,18 +53,31 @@ export const AddMaternityGrant: React.FC = () => {
             // Handle error response
         }
     };
-    useEffect(() => {
-        const fetchBranches = async () => {
-            try {
-                const response = await requestToBackend('get-branches', 'get');
-                setBranches(response.data);
-            } catch (error) {
-                console.error('Error fetching branches:', error);
-            }
-        };
+    const getBranches = async (): Promise<boolean> => {
+        try {
+            const response = await getFromServer('get-branches');
+            setBranches(response.data);
+        }
+        catch (err) {
+            console.error('Error fetching branches:', err);
+        }
+        return false;
+    };
 
-        fetchBranches();
+    useEffect(() => {
+        getBranches();
+        // const fetchBranches = async () => {
+        //     try {
+        //         const response = await getFromServer('get-branches');
+        //         setBranches(response.data);
+        //     } catch (error) {
+        //         console.error('Error fetching branches:', error);
+        //     }
+        // };
+
+        // fetchBranches();
     }, []);
+
     const inputStyle = {
         width: '350px',
         borderRadius: '8px',
@@ -67,9 +85,8 @@ export const AddMaternityGrant: React.FC = () => {
     };
 
     return (
-
         <div style={{
-            direction: 'rtl', padding: '24px', margin: '0 auto', borderRadius: '12px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'
+            padding: '24px', margin: '0 ', borderRadius: '12px', boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)'
         }}>
             <img src={bituhLeumiLogo} alt="Bituh Leumi Logo" style={{ display: 'block', margin: '0 auto 24px' }} />
             <Title level={4} style={{ textAlign: 'right', }}>הוספת אירוע חדש</Title>
@@ -82,11 +99,35 @@ export const AddMaternityGrant: React.FC = () => {
                 style={{ gap: '12px' }}
             >
                 <Form.Item
+                    name="id"
+                    rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
+                    style={{ marginBottom: '16px' }}
+                >
+                    <Input placeholder="תז מבוטחת (ID)" style={inputStyle} />
+                </Form.Item>
+
+                <Form.Item
                     name="oid"
                     rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
                     style={{ marginBottom: '16px' }}
                 >
-                    <Input placeholder="תז מבוטחת (OID)" style={inputStyle} />
+                    <Input placeholder="OID מבוטחת" style={inputStyle} />
+                </Form.Item>
+
+                <Form.Item
+                    name="firstName"
+                    rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
+                    style={{ marginBottom: '16px' }}
+                >
+                    <Input placeholder="שם פרטי" style={inputStyle} />
+                </Form.Item>
+
+                <Form.Item
+                    name="lastName"
+                    rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
+                    style={{ marginBottom: '16px' }}
+                >
+                    <Input placeholder="שם משפחה" style={inputStyle} />
                 </Form.Item>
 
                 <Form.Item
@@ -95,22 +136,6 @@ export const AddMaternityGrant: React.FC = () => {
                     style={{ marginBottom: '16px' }}
                 >
                     <DatePicker locale={locale} format="DD-MM-YYYY" style={{ ...inputStyle, width: '100%' }} placeholder="תאריך לידה בפועל" />
-                </Form.Item>
-
-                <Form.Item
-                    name="childrenBeforeBirth"
-                    rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
-                    style={{ marginBottom: '16px' }}
-                >
-                    <Input type="number" placeholder="מספר ילדים בלידה" style={inputStyle} />
-                </Form.Item>
-
-                <Form.Item
-                    name="childrenActualBirth"
-                    rules={[{ required: true, message: 'שדה זה שדה חובה.' }]}
-                    style={{ marginBottom: '16px' }}
-                >
-                    <Input type="number" placeholder="מספר ילדים בלידה בפועל" style={inputStyle} />
                 </Form.Item>
 
                 <Form.Item
@@ -144,8 +169,6 @@ export const AddMaternityGrant: React.FC = () => {
                 </Form.Item>
             </Form>
         </div>
-
-
     );
 };
 

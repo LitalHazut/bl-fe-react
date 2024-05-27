@@ -235,9 +235,18 @@ paths:
             schema:
               type: object
               properties:
-                OID:
+                id:
                   type: string
                   description: תז מבוטחת
+                oid:
+                  type: string
+                  description: OID מבוטחת
+                firstName:
+                  type: string
+                  description: שם פרטי
+                lastName:
+                  type: string
+                  description: שם משפחה
                 birthDate:
                   type: string
                   format: date
@@ -245,9 +254,7 @@ paths:
                 childrenBeforeBirth:
                   type: integer
                   description: מספר ילדים בלידה
-                childrenActualBirth:
-                  type: integer
-                  description: מספר ילדים בפועל
+                
                 submissionDate:
                   type: string
                   format: date
@@ -256,10 +263,12 @@ paths:
                   type: string
                   description: סניף
               required:
-                - OID
+                - id
+                - oid
+                - firstName
+                - lastName
                 - birthDate
                 - childrenBeforeBirth
-                - childrenActualBirth
                 - submissionDate
                 - branch
       responses:
