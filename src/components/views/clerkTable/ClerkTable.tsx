@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button } from 'antd';
+import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import './ClerkTable.css';
 
@@ -14,16 +14,18 @@ interface DataType {
 
 interface ExpandedDataType {
     key: React.Key;
-    mishoot: string;
-    lacoah: string;
+    task: string;
+    customer: string;
+    clerks: string;
     status: string;
-    openingDate: string;
-    closingDate: string;
-    treatment: number;
+    priority: string;
+    openingDate: Date;
+    closingDate: Date;
+    treatmentDuration: string;
 }
 const expandedRowRender = () => {
     const columns: ColumnsType<ExpandedDataType> = [
-        { title: 'משרות', dataIndex: 'mishoot', key: 'mishoot' },
+        { title: 'משימות', dataIndex: 'tasks', key: 'tasks' },
         { title: 'לקוח', dataIndex: 'customer', key: 'customer' },
         { title: 'פקידים', dataIndex: 'clerks', key: 'clerks' },
         { title: 'סטטוס', dataIndex: 'status', key: 'status' },
@@ -36,21 +38,25 @@ const expandedRowRender = () => {
     const data: ExpandedDataType[] = [
         {
             key: '1',
-            mishoot: 'תוכנית אינטרנט גבר',
-            lacoah: 'ישראל ישראלי',
-            status: 'חדש',
-            openingDate: '23/08/23',
-            closingDate: '14/09/23',
-            treatment: 15,
+            task: 'תיאור המשימה',
+            customer: 'שם הלקוח',
+            clerks: 'אנשי עבודה מוקצים',
+            status: 'סטטוס המשימה',
+            priority: 'עדיפות המשימה',
+            openingDate: new Date('2024-05-28T08:00:00'), // תאריך פתיחה
+            closingDate: new Date('2024-06-02T17:00:00'), // תאריך סגירה
+            treatmentDuration: '3 ימים', // משך הטיפול
         },
         {
             key: '2',
-            mishoot: 'מעקב איסור',
-            lacoah: '',
-            status: '',
-            openingDate: '',
-            closingDate: '',
-            treatment: 8,
+            task: 'תיאור המשימה',
+            customer: 'שם הלקוח',
+            clerks: 'אנשי עבודה מוקצים',
+            status: 'סטטוס המשימה',
+            priority: 'עדיפות המשימה',
+            openingDate: new Date('2024-05-28T08:00:00'), // תאריך פתיחה
+            closingDate: new Date('2024-06-02T17:00:00'), // תאריך סגירה
+            treatmentDuration: '3 ימים', // משך הטיפול
         },
     ];
 
