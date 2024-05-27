@@ -12,7 +12,7 @@
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-tbody>tr>td,
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>th,
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>td {
-    padding: 10px 12px 10px 0px;
+    padding: 5px 0px 20px 0px;
 }
 
 .ant-table-cell-divider-right::after {

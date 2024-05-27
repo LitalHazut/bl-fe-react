@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="app-container h-full flex flex-col">
+      <div dir='rtl' className="app-container h-full flex flex-col">
         <RouterProvider router={appRouter} />
       </div>
     </QueryClientProvider>

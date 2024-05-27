@@ -23,14 +23,14 @@ interface ExpandedDataType {
 }
 const expandedRowRender = () => {
     const columns: ColumnsType<ExpandedDataType> = [
-        { title: 'משך טיפול', dataIndex: 'treatment', key: 'treatment' },
-        { title: 'סיום מיועד למשימה', dataIndex: 'closeDate', key: 'closeDate' },
-        { title: 'פתיחת משימה', dataIndex: 'openingDate', key: 'openingDate' },
-        { title: 'עדיפות', dataIndex: 'favorite', key: 'favorite' },
-        { title: 'סטטוס', dataIndex: 'status', key: 'status' },
-        { title: 'פקידים', dataIndex: 'clerks', key: 'clerks' },
-        { title: 'לקוח', dataIndex: 'customer', key: 'customer' },
         { title: 'משרות', dataIndex: 'mishoot', key: 'mishoot' },
+        { title: 'לקוח', dataIndex: 'customer', key: 'customer' },
+        { title: 'פקידים', dataIndex: 'clerks', key: 'clerks' },
+        { title: 'סטטוס', dataIndex: 'status', key: 'status' },
+        { title: 'עדיפות', dataIndex: 'favorite', key: 'favorite' },
+        { title: 'פתיחת משימה', dataIndex: 'openingDate', key: 'openingDate' },
+        { title: 'סיום מיועד למשימה', dataIndex: 'closeDate', key: 'closeDate' },
+        { title: 'משך טיפול', dataIndex: 'treatment', key: 'treatment' },
     ];
 
     const data: ExpandedDataType[] = [
@@ -59,22 +59,10 @@ const expandedRowRender = () => {
 
 const columns: ColumnsType<DataType> = [
     {
-        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 5px' }}>ממתין למערכת אחרת</span></div>,
-        dataIndex: 'WaitingToAnotherSystem',
-        key: 'WaitingToAnotherSystem',
+        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 0px' }}>משימות</span></div>,
+        dataIndex: 'tasks',
+        key: 'tasks',
         align: 'right',
-    },
-    {
-        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 5px' }}>ממתין ללקוח</span></div>,
-        dataIndex: 'WaitingToCustomer',
-        key: 'WaitingToCustomer',
-        align: 'right',
-    },
-    {
-        title: <div style={{ textAlign: 'center' }}><span className="ant-table-cell-divider-right treatment ">בטיפול</span></div>,
-        dataIndex: 'treatment',
-        key: 'treatment',
-        align: 'center'
     },
     {
         title: (
@@ -82,10 +70,10 @@ const columns: ColumnsType<DataType> = [
                 <span style={{ marginRight: '125px' }}>בחריגה</span>
                 <div className="divider-line"></div>
                 <div className="divider-column-parts">
-                    <div style={{ direction: 'rtl', textAlign: 'center' }}> 21 ומעלה </div>
-                    <div style={{ direction: 'rtl', textAlign: 'center' }}> עד 21</div>
-                    <div style={{ direction: 'rtl', textAlign: 'center' }}> עד 7 </div>
-                    <div style={{ direction: 'rtl', textAlign: 'center' }}> סהכ</div>
+                    <div style={{ textAlign: 'center' }}> סהכ</div>
+                    <div style={{ textAlign: 'center' }}> עד 7 </div>
+                    <div style={{ textAlign: 'center' }}> עד 21</div>
+                    <div style={{ textAlign: 'center' }}> 21 ומעלה </div>
                 </div>
             </span >
         ),
@@ -95,11 +83,26 @@ const columns: ColumnsType<DataType> = [
         width: '300px'
     },
     {
-        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 0px' }}>משימות</span></div>,
-        dataIndex: 'tasks',
-        key: 'tasks',
+        title: <div style={{ textAlign: 'center' }}><span className="ant-table-cell-divider-right treatment ">בטיפול</span></div>,
+        dataIndex: 'treatment',
+        key: 'treatment',
+        align: 'center'
+    },
+    {
+        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 5px' }}>ממתין ללקוח</span></div>,
+        dataIndex: 'WaitingToCustomer',
+        key: 'WaitingToCustomer',
         align: 'right',
     },
+    {
+        title: <div style={{ textAlign: 'center' }}><span style={{ padding: '0 5px' }}>ממתין למערכת אחרת</span></div>,
+        dataIndex: 'WaitingToAnotherSystem',
+        key: 'WaitingToAnotherSystem',
+        align: 'right',
+    },
+
+
+
 
 ];
 const data: DataType[] = [
@@ -121,10 +124,12 @@ const data: DataType[] = [
 
 const ClerkTable: React.FC = () => {
     return (
-        <Table direction='rtl' columns={columns} dataSource={data}
+        <div dir="rtl">
+            <Table columns={columns} dataSource={data}
 
-            expandable={{ expandedRowRender }}
-        />
+                expandable={{ expandedRowRender }}
+            />
+        </div>
     );
 };
 
