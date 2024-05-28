@@ -5,6 +5,7 @@ import { AppRoot } from '../components/layout/AppRoot';
 import { AddMaternityGrant } from '../components/views/maternityGrant/AddMaternityGrant';
 import Login from '../components/views/login/Login';
 import { ClerkTasksDeshbord } from '../components/views/clerkTasksDeshbord/ClerkTasksDeshbord';
+import { SpcificClaim } from '../components/views/spcificClaim/SpcificClaim';
 
 
 export const appRouter = createBrowserRouter([
@@ -24,6 +25,10 @@ export const appRouter = createBrowserRouter([
       {
         path: PathsDict[RouteKey.CLERK_TASKS_DESHBORD],
         element: <ClerkTasksDeshbord />,
+      },
+      {
+        path: PathsDict[RouteKey.SPCIFIC_CLAIM],
+        element: <SpcificClaim />,
       },
       // {
       //   path: PathsDict[RouteKey.WELCOME],

@@ -3,7 +3,8 @@ export enum RouteKey {
   WELCOME = 'WLC',
   LOGIN = 'LOGIN',
   ADD_MATERNITY_GRANT = 'AMG',
-  CLERK_TASKS_DESHBORD = 'CTD'
+  CLERK_TASKS_DESHBORD = 'CTD',
+  SPCIFIC_CLAIM = 'SC',
   // SCAFFOLD_PLATFORM_CONFIG = "SCAFFOLD_PLATFORM_CONFIG"
 }
 
@@ -12,6 +13,7 @@ export const PathsDict: Record<RouteKey, string> = {
   [RouteKey.WELCOME]: '/welcome',
   [RouteKey.LOGIN]: '/login',
   [RouteKey.CLERK_TASKS_DESHBORD]: '/clerkTasksDeshbord',
+  [RouteKey.SPCIFIC_CLAIM]: '/clerkTasksDeshbord/specificClaim',
   [RouteKey.ADD_MATERNITY_GRANT]: '/addMaternityGrant',
 
   // [RouteKey.AUTH_LOGIN]: '/auth/login',

@@ -3,12 +3,9 @@ import { SecondaryMenu } from '../secondaryMenu/SecondaryMenu';
 
 export const ClerkTasksDeshbord = () => {
     return (
-
-        <div style={{}}>
+        <div>
             <SecondaryMenu />
             <ClaimsTable />
         </div>
-
-
     )
 }

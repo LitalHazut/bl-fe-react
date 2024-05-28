@@ -13,7 +13,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div dir='rtl' className="app-container h-full flex flex-col">
 
-        {window.location.pathname === '/ClerkTasksDeshbord' && <TopMenu />}
+        {window.location.pathname === '/clerkTasksDeshbord' && <TopMenu />}
 
         <RouterProvider router={appRouter} />
 
