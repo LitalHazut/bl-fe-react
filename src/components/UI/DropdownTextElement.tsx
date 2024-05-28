@@ -19,14 +19,13 @@ const DropdownTextElement: React.FC<DropdownTextElementProps> = ({
 }) => {
     return (
         <div style={{ display: "flex", flexDirection: "column", marginRight: '10px' }}>
-            <span style={{ textAlign: 'right', marginRight: '10px' }}>{label}</span>
+            <span style={{ textAlign: 'right', marginRight: '10px', color: "#fff", }}>{label}</span>
             <Select
                 direction="rtl"
                 defaultValue={defaultValue}
                 style={{
                     borderRadius: "20px",
-                    backgroundColor: "#fff",
-                    marginTop: "10px",
+                    width: '100%',
                     ...style,
                 }}
                 dropdownStyle={{ borderRadius: "10px" }}

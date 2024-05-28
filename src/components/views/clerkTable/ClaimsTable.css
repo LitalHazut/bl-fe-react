@@ -12,24 +12,31 @@
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper .ant-table-tbody>tr>td,
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>th,
 :where(.css-dev-only-do-not-override-17seli4).ant-table-wrapper tfoot>tr>td {
-    padding: 5px 0px 20px 0px;
+    padding: 10px 10px
 }
 
-.ant-table-cell-divider-right::after {
+
+.ant-table-cell-divider-right::after,
+.ant-table-cell-divider-left::before {
     content: '';
     position: absolute;
     top: 50%;
-    right: 0;
     transform: translateY(-50%);
     width: 1px;
-    height: 4em;
+    height: 4.5em;
     background-color: #959595;
+    z-index: 1;
 }
 
-.treatment {
-    margin-right: 8px;
-
+.ant-table-cell-divider-right::after {
+    right: 0;
 }
+
+.ant-table-cell-divider-left::before {
+    left: 0;
+}
+
+
 
 .divider-text {
     position: relative;
@@ -48,13 +55,16 @@
     justify-content: flex-end;
     width: 100%;
     margin-left: -10px;
+    margin-top: 4px;
+
 }
 
 .divider-column-parts>div {
     width: 100%;
-    border-left: 1px solid #959595;
 }
 
-.divider-column-parts>div:first-child {
-    border-left: none;
+.clickableText {
+    color: rgba(0, 87, 255, 1);
+    text-decoration: underline;
+    cursor: pointer;
 }

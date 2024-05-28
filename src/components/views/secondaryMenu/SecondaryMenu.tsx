@@ -31,7 +31,7 @@ export const SecondaryMenu = () => {
     return (
         <div >
             <div style={{
-                display: 'flex', background: '#58ACE8', padding: '10px', gap: '70px', borderRadius: '10px 10px 0 0'
+                display: 'flex', background: '#58ACE8', padding: '10px', gap: '65px', borderRadius: '10px 10px 0 0'
             }}>
                 <DropdownTextElement
                     label="סניף המשימה"

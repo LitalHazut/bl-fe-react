@@ -11,8 +11,8 @@ export const PathsDict: Record<RouteKey, string> = {
   [RouteKey.ROOT]: '/',
   [RouteKey.WELCOME]: '/welcome',
   [RouteKey.LOGIN]: '/login',
-  [RouteKey.CLERK_TASKS_DESHBORD]: '/ClerkTasksDeshbord',
-  [RouteKey.ADD_MATERNITY_GRANT]: '/AddMaternityGrant',
+  [RouteKey.CLERK_TASKS_DESHBORD]: '/clerkTasksDeshbord',
+  [RouteKey.ADD_MATERNITY_GRANT]: '/addMaternityGrant',
 
   // [RouteKey.AUTH_LOGIN]: '/auth/login',
   // // [RouteKey.AUTH_LOGOUT]: '/auth/logout',

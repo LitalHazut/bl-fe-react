@@ -3,7 +3,7 @@ import { Input, Button, Typography, Row, Col, message } from 'antd';
 import bituhLeumiLogo from '../../../images/bituhLeumiLogo.svg';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'; // Import eye icons
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -14,7 +14,7 @@ export const LoginPage = () => {
             // Simulate successful login
             console.log('Login successful');
             // Redirect to /ClerkTasksDeshbord route upon successful login
-            window.location.href = '/ClerkTasksDeshbord';
+            window.location.href = '/clerkTasksDeshbord';
         } else {
             // Simulate login failure
             console.error('Login failed');
@@ -52,14 +52,17 @@ export const LoginPage = () => {
                     >
                         התחברות
                     </Button>
-                    <text style={{ color: 'rgba(0, 84, 166, 1)' }}>לפתרון בעיות התחברות נא ליצור קשר עם התמיכה הטכנית</text>
+
+                    <Text style={{ textAlign: 'center', color: 'rgba(0, 84, 166, 1)', marginBottom: '20px' }}>לפתרון בעיות התחברות נא ליצור קשר עם התמיכה הטכנית</Text>
+
                     <Button
 
-                        onClick={() => { window.location.href = '/AddMaternityGrant' }}
+                        onClick={() => { window.location.href = '/addMaternityGrant' }}
                         style={{ width: '100%', color: 'rgba(0, 84, 166, 1)', background: 'white', }}
                     >
                         הוספת אירוע לידה
                     </Button>
+
                 </Col>
             </Row>
         </div>
