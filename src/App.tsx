@@ -4,8 +4,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { appRouter } from './routing/app-routes';
 import { TopMenu } from './components/views/topMenu/TopMenu';
 
-// import React from 'react';
-
 const queryClient = new QueryClient();
 
 function App() {
