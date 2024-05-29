@@ -17,7 +17,7 @@ export const TopMenu = () => {
     };
     return (
         <div>
-            <div style={{ position: 'absolute', top: '10px', right: '60px', display: 'block', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <div style={{ position: 'absolute', top: '10px', display: 'block', flexDirection: 'column', alignItems: 'flex-end' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px' }}>
                     <img
                         src={Avatar}
@@ -34,7 +34,7 @@ export const TopMenu = () => {
                             width: '200px',
                             height: '40px',
                             alignContent: 'center',
-                            marginRight: "63vw",
+                            marginRight: "52rem",
                             marginTop: '2px'
                         }} />
                 </div>
@@ -49,7 +49,7 @@ export const TopMenu = () => {
                         <ClickableText text="משימות" isClicked={selectedText === "משימות"} onClick={() => handleClick("משימות")} />
                         <ClickableText text="מסכי עזר" isClicked={selectedText === "מסכי עזר"} onClick={() => handleClick("מסכי עזר")} />
                         <ClickableText text="ניהול" isClicked={selectedText === "ניהול"} onClick={() => handleClick("ניהול")} />
-                        <ClickableText text="טבלאות מערכת" isClicked={selectedText === "טבלאות מערכת"} onClick={() => handleClick("טלבאות מערכת")} />
+                        <ClickableText text="טבלאות מערכת" isClicked={selectedText === "טבלאות מערכת"} onClick={() => handleClick("טבלאות מערכת")} />
                     </div>
                     <div style={{ display: 'flex' }}>
                         <div style={{ color: 'white', fontSize: '14px', marginLeft: '10px', alignContent: 'center' }}>זהות לקוח</div>

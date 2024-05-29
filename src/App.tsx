@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div dir='rtl' className="app-container h-full flex flex-col">
+      <div dir='rtl' >
 
         {window.location.pathname === '/clerkTasksDeshbord' && <TopMenu />}
 

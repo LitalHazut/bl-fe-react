@@ -119,14 +119,14 @@ const ClaimsTable: React.FC = () => {
 
     return (
         <div dir="rtl" style={{ paddingLeft: '0px' }}>
-            <Table
+            <Table className='custom-table-container'
                 columns={columns}
-                dataSource={data}
+                dataSource={data} pagination={false}
                 expandable={{
                     expandedRowRender,
                     rowExpandable: record => record.tasks && record.tasks.length > 0,
                 }}
-                scroll={{ y: 300 }}
+
                 rowClassName={(record) => (record.tasks && record.tasks.length === 0 ? 'no-expand-icon' : '')}
             />
         </div>
