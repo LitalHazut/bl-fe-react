@@ -89,5 +89,20 @@
 .ant-table-wrapper::-webkit-scrollbar-thumb {
     border-radius: 20px;
     background: rgba(255, 255, 255, 1);
-    height: 32px;
+    height: 0.2rem;
+    border: 3px solid #FFF;
+}
+
+.ant-table-wrapper::-webkit-scrollbar {
+    width: 14px;
+}
+
+.ant-table-wrapper::-webkit-scrollbar-track {
+    background: rgba(228, 238, 253, 1);
+}
+
+.ant-table-wrapper::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: 4px solid rgba(228, 238, 253, 1);
 }
